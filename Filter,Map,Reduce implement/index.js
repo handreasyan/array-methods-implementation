@@ -45,5 +45,5 @@ Array.prototype.myReduce = function (func, aggr) {
 console.log(
   [1, 2, 3].myReduce((agr, e) => {
     return agr + e;
-  },/*10*/)
+  }/*,10*/)
 );
