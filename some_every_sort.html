@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </head>
+      <body>
+        <script>
+          // sort() method ==================================================================
+          // 1. with for loop
+          function sortArr(arr) {
+            for (let i = 0; i < arr.length; i++) {
+              for (let i = 0; i < arr.length; i++) {
+                let temp = arr[i];
+                if (arr[i] > arr[i + 1]) {
+                  arr[i] = arr[i + 1];
+                  arr[i + 1] = temp;
+                }
+              }
+            }
+            return arr;
+          }
+          console.log(sortArr([7, 52, 1, 69, 8, 2]));
+          console.log(sortArr([9, 8, 7, 6, 5, 4, 3, 2, 1]));
+          console.log(sortArr([100, 7, 0.5, 23, 55]));
+
+          // 2. with Recursion
+          function sortFunc(arr) {
+            let i = 0;
+            let c = 0;
+            function loop() {
+              c++;
+              i = 0;
+              if (c > arr.length) {
+                return;
+              }
+              function sort(num1, num2) {
+                if (num1 === undefined) {
+                  return;
+                }
+
+                if (num1 > num2) {
+                  arr[i] = num2;
+                  arr[i + 1] = num1;
+                }
+
+                i++;
+                sort(arr[i], arr[i + 1]);
+              }
+
+              sort(arr[i], arr[i + 1]);
+              loop();
+            }
+            loop();
+            return arr;
+          }
+
+          console.log(sortFunc([7, 52, 1, 69, 8, 2]));
+          console.log(sortFunc([9, 8, 7, 6, 5, 4, 3, 2, 1]));
+          console.log(sortFunc([100, 7, 0.5, 23, 55]));
+
+          // every() =================================================================================================
+          function every(arr, func) {
+            let f = true;
+            for (let el of arr) {
+              if (!func(el)) {
+                f = false;
+              }
+            }
+            return f;
+          }
+
+          console.log(every([NaN, NaN, NaN], isNaN)); // → true
+          console.log(every([NaN, NaN, 4], isNaN)); // → false
+
+          // some() ======================================================================
+          function some(arr, func) {
+            for (let el of arr) {
+              if (func(el)) {
+                return true;
+              }
+            }
+            return false;
+          }
+          console.log(some([NaN, 3, 4], isNaN)); // → true
+          console.log(some([2, 3, 4], isNaN)); // → false
+        </script>
+      </body>
+    </html>
+  </body>
+</html>
